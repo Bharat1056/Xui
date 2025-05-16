@@ -7,6 +7,7 @@ import Installation from "@/components/installation";
 import Introduction from "@/components/introduction";
 import Sidebar from "@/components/sidebar";
 import React from "react";
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const contentComponents = {
   'introduction': Introduction,
@@ -111,13 +112,14 @@ const Page = () => {
   ));
 
   return (
-    <>
-      <div className="flex h-full">
-        <Sidebar 
-          items={itemsWithHandlers} 
-          activeItemId={activeItem}
-        />
-        <div className="flex-1 p-6 overflow-auto">
+    <div className="flex h-full w-full overflow-hidden">
+      <Sidebar 
+        items={itemsWithHandlers} 
+        activeItemId={activeItem}
+        className="h-full"
+      />
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="p-6 overflow-y-auto h-full">
           <nav className="flex" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-2">
               <li className="inline-flex items-center">
@@ -145,14 +147,15 @@ const Page = () => {
               </li>
             </ol>
           </nav>
-          
-          <div className="mt-6">
-            <ContentComponent />
+          <div className="mt-4 h-[calc(100vh-150px)] overflow-y-auto border rounded-md">
+            <ScrollArea className="h-full">
+              <ContentComponent />
+            </ScrollArea>
           </div>
         </div>
       </div>
-    </>
-  );
+    </div>
+  )
 };
 
 export default Page;

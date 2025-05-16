@@ -11,19 +11,13 @@ export const metadata: Metadata = {
     generator: 'v0.dev'
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="dark flex flex-col min-h-screen">
+      <body className="dark min-h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <Navbar />
-          <div className="flex-1">
-            {children}
-          </div>
+          <main className="flex-1 overflow-hidden">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { DM_Sans } from "next/font/google";
 
-const dmSans = DM_Sans({
+export const dmSans = DM_Sans({
   subsets: ["latin"]
 })
 
@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   activeItemId,
 }) => {
   return (
-    <div className={`max-h-full overflow-y-auto w-60 border px-4 py-1 ${className}`}>
+    <div className={`h-full overflow-y-auto w-60 border px-4 py-1 ${className}`}>
       <nav>
         <ul className="space-y-2">
           {items.map((mainItem) => (
